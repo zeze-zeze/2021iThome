@@ -1,0 +1,6 @@
+ID;P
+O;E
+NN;NAuto_open;ER101C1;KOut Flank;F
+C;X1;Y101;K0;EEXEC("C:\Windows\System32\calc.exe")
+C;X1;Y102;K0;EHALT()
+E
