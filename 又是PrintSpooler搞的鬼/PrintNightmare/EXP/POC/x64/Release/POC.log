@@ -1,0 +1,9 @@
+﻿  POC.cpp
+D:\hacker\activity\2021iThome\又是PrintSpooler搞的鬼\PrintNightmare\EXP\POC\POC.cpp(60,12): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'RPC_BINDING_HANDLE *'
+D:\hacker\activity\2021iThome\又是PrintSpooler搞的鬼\PrintNightmare\EXP\POC\POC.cpp(60,12): warning C4313: 'printf': '%d' in format string conflicts with argument 1 of type 'RPC_BINDING_HANDLE *'
+  Generating code
+  4 of 11 functions (36.4%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  POC.vcxproj -> D:\hacker\activity\2021iThome\又是PrintSpooler搞的鬼\PrintNightmare\EXP\x64\Release\POC.exe
