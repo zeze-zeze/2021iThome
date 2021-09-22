@@ -12,7 +12,7 @@ start:
     sub esp, 18h
 
     xor esi, esi
-    push esi			; WinExec
+    push esi                        ; WinExec
     push 636578h
     push 456e6957h
     mov [ebp-4], esp
@@ -44,29 +44,29 @@ start:
     add eax, ebx                    ; NT Header = Image Base + e_lfanew
 
     ; 取得 Export Directory 位址
-    mov eax, [eax + 78h]	        ; DataDirectory 結構，成員 VirtualAddress 是 Export Directory 的 RVA
-    add eax, ebx 			        ; Export Directory = Image Base + Export Directory 的 RVA
+    mov eax, [eax + 78h]            ; DataDirectory 結構，成員 VirtualAddress 是 Export Directory 的 RVA
+    add eax, ebx                    ; Export Directory = Image Base + Export Directory 的 RVA
 
     ; 取得 Address Table、Name Pointer Table、Ordinal Table
-    mov ecx, [eax + 24h]		    ; Ordinal Table 的 RVA
-    add ecx, ebx 			        ; Ordinal Table 的位址
+    mov ecx, [eax + 24h]            ; Ordinal Table 的 RVA
+    add ecx, ebx                    ; Ordinal Table 的位址
     mov [ebp-0Ch], ecx
 
-    mov edi, [eax + 20h]	        ; Name Pointer Table 的 RVA
-    add edi, ebx 			        ; Name Pointer Table 的位址
+    mov edi, [eax + 20h]            ; Name Pointer Table 的 RVA
+    add edi, ebx                    ; Name Pointer Table 的位址
     mov [ebp-10h], edi
 
-    mov edx, [eax + 1Ch] 		    ; Address Table 的 RVA
-    add edx, ebx 			        ; Address Table 的位址
+    mov edx, [eax + 1Ch]            ; Address Table 的 RVA
+    add edx, ebx                    ; Address Table 的位址
     mov [ebp-14h], edx
 
-    mov edx, [eax + 14h] 		    ; Export Directory 其中一個成員 NumberOfFunctions
+    mov edx, [eax + 14h]            ; Export Directory 其中一個成員 NumberOfFunctions
     xor eax, eax
 
     ; 迴圈尋找目標函數
     .loop:
         mov edi, [ebp-10h] 	        ; Name Pointer Table
-        mov esi, [ebp-4] 	        ; 目標字串 "WinExec\x00"
+        mov esi, [ebp-4]            ; 目標字串 "WinExec\x00"
         xor ecx, ecx
 
         cld
@@ -76,16 +76,16 @@ start:
         repe cmpsb        	        ; 比較字串是否為 WinExec
         jz start.found
 
-        inc eax 	         	    ; counter++
-        cmp eax, edx    	        ; check if last function is reached
-        jb start.loop 		        ; if not the last -> loop
+        inc eax                     ; counter++
+        cmp eax, edx                ; check if last function is reached
+        jb start.loop               ; if not the last -> loop
 
         add esp, 26h      		
-        jmp start.end 		        ; if function is not found, jump to end
+        jmp start.end               ; if function is not found, jump to end
 
     .found:
         mov ecx, [ebp-0Ch]	        ; Ordinal Table
-        mov edx, [ebp-14h]  	    ; Address Table
+        mov edx, [ebp-14h]          ; Address Table
 
         mov ax, [ecx + eax*2] 	    ; y = Ordinal Table + 2 * x
         mov eax, [edx + eax*4] 	    ; WinExec 的 RVA = Address Table + 4 * y
@@ -94,7 +94,7 @@ start:
 
         ; 3. 執行 WinExec
         xor edx, edx
-        push edx                        ; C:\Windows\System32\calc.exe
+        push edx                    ; C:\Windows\System32\calc.exe
         push 6578652eh
         push 636c6163h
         push 5c32336dh
@@ -104,9 +104,9 @@ start:
         push 575c3a43h
         mov esi, esp
 
-        push 10  		                ; uCmdShow: SW_SHOWDEFAULT
-        push esi 		                ; lpCmdLine: "C:\Windows\System32\calc.exe"
-        call eax 		                ; WinExec("C:\Windows\System32\calc.exe", 10)
+        push 10                     ; uCmdShow: SW_SHOWDEFAULT
+        push esi                    ; lpCmdLine: "C:\Windows\System32\calc.exe"
+        call eax                    ; WinExec("C:\Windows\System32\calc.exe", 10)
 
         add esp, 46h
 
