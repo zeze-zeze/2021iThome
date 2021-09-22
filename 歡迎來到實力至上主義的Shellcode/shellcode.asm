@@ -65,15 +65,15 @@ start:
 
     ; 迴圈尋找目標函數
     .loop:
-        mov edi, [ebp-10h] 	        ; Name Pointer Table
+        mov edi, [ebp-10h]          ; Name Pointer Table
         mov esi, [ebp-4]            ; 目標字串 "WinExec\x00"
         xor ecx, ecx
 
         cld
-        mov edi, [edi + eax*4]	    ; Name Table + 4 * x 是函數名稱的 RVA
-        add edi, ebx       	        ; 取得函數名稱的位址
+        mov edi, [edi + eax*4]      ; Name Table + 4 * x 是函數名稱的 RVA
+        add edi, ebx                ; 取得函數名稱的位址
         add cx, 8
-        repe cmpsb        	        ; 比較字串是否為 WinExec
+        repe cmpsb                  ; 比較字串是否為 WinExec
         jz start.found
 
         inc eax                     ; counter++
@@ -84,11 +84,11 @@ start:
         jmp start.end               ; if function is not found, jump to end
 
     .found:
-        mov ecx, [ebp-0Ch]	        ; Ordinal Table
+        mov ecx, [ebp-0Ch]          ; Ordinal Table
         mov edx, [ebp-14h]          ; Address Table
 
-        mov ax, [ecx + eax*2] 	    ; y = Ordinal Table + 2 * x
-        mov eax, [edx + eax*4] 	    ; WinExec 的 RVA = Address Table + 4 * y
+        mov ax, [ecx + eax*2]       ; y = Ordinal Table + 2 * x
+        mov eax, [edx + eax*4]      ; WinExec 的 RVA = Address Table + 4 * y
         add eax, ebx
 
 
