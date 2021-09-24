@@ -7,7 +7,6 @@ start:
     push edi
     push ebp
 
-    push ebp
     mov ebp, esp
     sub esp, 18h
 
@@ -80,7 +79,7 @@ start:
         cmp eax, edx                ; check if last function is reached
         jb start.loop               ; if not the last -> loop
 
-        add esp, 26h      		
+        add esp, 24h      		
         jmp start.end               ; if function is not found, jump to end
 
     .found:
@@ -108,7 +107,7 @@ start:
         push esi                    ; lpCmdLine: "C:\Windows\System32\calc.exe"
         call eax                    ; WinExec("C:\Windows\System32\calc.exe", 10)
 
-        add esp, 46h
+        add esp, 44h
 
     .end:	
         pop ebp
