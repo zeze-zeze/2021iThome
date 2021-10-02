@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShellcodeLoaderFiber", "ShellcodeLoaderFiber\ShellcodeLoaderFiber.vcxproj", "{0CD4A506-54FE-49C5-A5A5-60CFF597C77A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CD4A506-54FE-49C5-A5A5-60CFF597C77A}.Debug|x64.ActiveCfg = Debug|x64
+		{0CD4A506-54FE-49C5-A5A5-60CFF597C77A}.Debug|x64.Build.0 = Debug|x64
+		{0CD4A506-54FE-49C5-A5A5-60CFF597C77A}.Debug|x86.ActiveCfg = Debug|Win32
+		{0CD4A506-54FE-49C5-A5A5-60CFF597C77A}.Debug|x86.Build.0 = Debug|Win32
+		{0CD4A506-54FE-49C5-A5A5-60CFF597C77A}.Release|x64.ActiveCfg = Release|x64
+		{0CD4A506-54FE-49C5-A5A5-60CFF597C77A}.Release|x64.Build.0 = Release|x64
+		{0CD4A506-54FE-49C5-A5A5-60CFF597C77A}.Release|x86.ActiveCfg = Release|Win32
+		{0CD4A506-54FE-49C5-A5A5-60CFF597C77A}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {927619E2-F6EB-419C-A137-DAAA50D4C780}
+	EndGlobalSection
+EndGlobal
