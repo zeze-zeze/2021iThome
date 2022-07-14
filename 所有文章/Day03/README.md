@@ -1,12 +1,10 @@
-# 【Day 03】又是 Print Spooler 搞的鬼 - CVE-2021-1675 PrintNightmare
-
 ## 環境
 * Windows Server 2019 (目標環境不能被更新過)
 * Visual Studio 2019
 * Impacket 0.9.23
 
 ## 漏洞介紹
-今年微軟的 Print Spooler 漏洞頻頻，包含六月中的 CVE-2021-1675、七月的 CVE-2021-34527，還有八月的 CVE-2021-36936。這篇要說明這個被微軟稱作 PrintingNightmare 的 CVE-2021-1675 的成因與原理。
+今年微軟的 Print Spooler 漏洞頻頻，包含六月中的 CVE-2021-1675、七月的 CVE-2021-34527，還有八月的 CVE-2021-36936。這篇要說明這個被微軟稱作 PrintingNightmare 的 CVE-2021-34527 的成因與原理。
 
 列印多工緩衝處理器 - Print Spooler，是用來管理所有本地和網絡打印隊列及控制所有打印工作。
 
@@ -145,7 +143,7 @@ int wmain(int argc, wchar_t* argv[]) {
 POC 會試圖複製並載入 InjectedDLL.dll 檔案，ErrorCode 為 0 時代表成功。這時在目標機器用 Process Explorer 查看 spoolsv.exe 有沒有成功載入 InjectedDLL.dll。
 
 ## 修補狀況
-CVE-2021-1675 已在今年六月的 Patch Tuesday 修補，不過因為沒修補完全而出現的 CVE-2021-34527 又是另一個故事了。
+CVE-2021-34527 已在今年七月修補，也包含與之相關的 CVE-2021-1675。
 
 ## 參考資料
 * [曾感染臺灣的勒索軟體Magniber正在開採PrintNightmare漏洞](https://www.ithome.com.tw/news/146233)
