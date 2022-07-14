@@ -1,4 +1,4 @@
-## PrintNightmare (CVE-2021-1675): Remote code execution in Windows Spooler Service
+## PrintNightmare (CVE-2021-34527): Remote code execution in Windows Spooler Service
 
  
 
@@ -10,9 +10,9 @@ The beginning of the research is PrintDemon from which we get inspiration. After
 
  
 
-CVE-2021-1675 is a remote code execution in Windows Print Spooler. According to MSRC security bullion, this vulnerability is reported by Zhipeng Huo, Piotr Madej and Zhang Yunhai. 
+CVE-2021-34527 is a remote code execution in Windows Print Spooler. According to MSRC security bullion, this vulnerability is reported by Zhipeng Huo, Piotr Madej and Zhang Yunhai. 
 
-We also found this bug before and hope to keep it secret to participate Tianfu Cup ☹. As there are some people already published exploit video of CVE-2021-1675. Here we publish our writeup and exploit for CVE-2021-1675. 
+We also found this bug before and hope to keep it secret to participate Tianfu Cup ☹. As there are some people already published exploit video of CVE-2021-34527. Here we publish our writeup and exploit for CVE-2021-34527. 
 
  
 
@@ -62,7 +62,7 @@ To add or update a printer driver ("OEM Printer Driver") to a print server ("COR
 
  
 
-## CVE-2021-1675 Analysis
+## CVE-2021-34527 Analysis
 
 Clearly, if an attacker can bypass the authentication of RpcAddPrinterDriver. He could install an malicious driver in the print server. In msdn, the client need SeLoadDriverPrivilege to call the RPC. However, this isn’t true. Let check the authentication logical here:
 
