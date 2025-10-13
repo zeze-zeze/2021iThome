@@ -28,7 +28,7 @@ Provider 負責提供事件，把事件產生給 Session 處理。Provider 是�
 Consumer 負責透過 Session 接收從 Provider 來的事件。
 
 ### 實際用途
-#### 籃隊
+#### 藍隊
 藍隊的部分，因為有 Callback 機制，可以被動且即時的收到事件。
 
 以 Provider Microsoft-Windows-Threat-Intelligence 為例，它能夠監測 AllocationType、RegionSizes、ProtectionMask，其中的 ProtectionMask 如果是可讀、可寫、可執行的一塊記憶體，則比較有可能是惡意程式。雖然無法斷言只要看到可讀、可寫、可執行的記憶體就代表是惡意程式，不過經過種種方式尋找證據，就可以有一定的信心判斷它是不是惡意程式。
@@ -42,7 +42,7 @@ Consumer 負責透過 Session 接收從 Provider 來的事件。
 * RunOnceEx
 
 #### 紅隊
-既然 ETW 對於籃隊是一個十分有效的工具，那紅隊這邊當然也會有對應策略。
+既然 ETW 對於藍隊是一個十分有效的工具，那紅隊這邊當然也會有對應策略。
 
 在 Usermode，也就是 Ring3 中，可以透過 Hook EtwEventWrite 的方式攔截事件寫入的函數；或是使用 EtwEventUnregister 取消註冊 ETW Event。之後的文章會介紹一些在 Usermode 繞過 ETW 的方法。
 
